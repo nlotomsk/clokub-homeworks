@@ -1,6 +1,7 @@
 resource "yandex_compute_instance" "worknode" {
-  count       = 4
+  count       = 3
   name        = "${local.role.1}-0${count.index+1}"
+  hostname    = "${local.role.1}-0${count.index+1}"
   platform_id = var.vm_worknode_instance_platform_id
   resources {
     cores         = var.vm_worknode_resources.cores
@@ -10,6 +11,7 @@ resource "yandex_compute_instance" "worknode" {
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
+      size           = "${var.vm_worknode_resources.disk}"
     }
   }
   scheduling_policy {

@@ -6,6 +6,7 @@ resource "yandex_compute_instance" "controlnode" {
   }
     #name = "netology-${local.env}-${local.project}-${local.role.1}-${each.value.vm_name}"
     name = "${local.role.0}-${each.value.vm_name}"
+    hostname    = "${local.role.0}"
   
   platform_id = var.vm_db_instance_platform_id
   resources {
