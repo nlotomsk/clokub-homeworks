@@ -19,17 +19,6 @@ variable "default_zone" {
   default     = "ru-central1-a"
   description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
 }
-# variable "yandex_cloud_id" {
-#   default = "b1g4dkqda3n9tf715ll4"
-# }
-
-# variable "yandex_folder_id" {
-#   default = "b1ghbqrg7muqomhugc6i"
-# }
-
-# variable "a-zone" {
-#   default = "ru-central1-a"
-# }
 
 variable "nat-instance-image-id" {
   default = "fd80mrhj8fl2oe87o4e1"
