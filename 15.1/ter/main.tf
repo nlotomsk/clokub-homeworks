@@ -1,7 +1,6 @@
 resource "yandex_compute_instance" "nat-instance" {
   name     = var.nat-instance-name
   hostname = "${var.nat-instance-name}.${var.domain}"
-  zone     = var.a-zone
 
   resources {
     cores  = 2
@@ -24,14 +23,13 @@ resource "yandex_compute_instance" "nat-instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_ed25519.pub")}"
+    ssh-keys = "ubuntu:${local.key_ssh}"
   }
 }
 
 resource "yandex_compute_instance" "public-vm" {
   name     = var.public-vm-name
   hostname = "${var.public-vm-name}.${var.domain}"
-  zone     = var.a-zone
 
   resources {
     cores  = 2
@@ -53,14 +51,13 @@ resource "yandex_compute_instance" "public-vm" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_ed25519.pub")}"
+    ssh-keys = "ubuntu:${local.key_ssh}"
   }
 }
 
 resource "yandex_compute_instance" "private-vm" {
   name     = var.private-vm-name
   hostname = "${var.private-vm-name}.${var.domain}"
-  zone     = var.a-zone
 
   resources {
     cores  = 2
@@ -82,6 +79,6 @@ resource "yandex_compute_instance" "private-vm" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_ed25519.pub")}"
+    ssh-keys = "ubuntu:${local.key_ssh}"
   }
 }
